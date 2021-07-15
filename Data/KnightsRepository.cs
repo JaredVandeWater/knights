@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
+using knights.Models;
 
 namespace knights.Data
 {
@@ -18,7 +19,7 @@ namespace knights.Data
       var sql = "SELECT * FROM knights";
       return _db.Query<Knight>(sql).ToList();
     }
-    public Knight Create(Knight knightdata)
+    public Knight Create(Knight knightData)
     {
       var sql = @"
             INSERT INTO knights(name, weapon)
@@ -32,3 +33,4 @@ namespace knights.Data
 
     }
   }
+}

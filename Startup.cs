@@ -42,6 +42,13 @@ namespace knights
       services.AddTransient<KnightsService>();
     }
 
+    public IDbConnection CreateDbConnection()
+    {
+      // NOTE reading environment variables
+      string connectionString = Configuration["DB:CONNECTION_STRING"];
+      return new MySqlConnection(connectionString);
+    }
+
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
