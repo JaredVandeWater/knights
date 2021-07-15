@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using knights.Data;
 using knights.Models;
@@ -24,9 +23,22 @@ namespace knights.Services
       return _knightsRepo.Create(knightData);
     }
 
-    internal object GetById(int id)
+    public Knight GetById(int id)
     {
       return _knightsRepo.getOne(id);
+    }
+
+    public string delete(int id)
+    {
+      int updated = _knightsRepo.delete(id);
+      if (updated > 0)
+      {
+        return "Deleted";
+      }
+      else
+      {
+        throw new System.Exception("could not delete");
+      }
     }
   }
 }

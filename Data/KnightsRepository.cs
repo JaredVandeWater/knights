@@ -35,8 +35,16 @@ namespace knights.Data
 
     public Knight getOne(int id)
     {
-      string sql = "SELECT * FROM Knights Where id = @id";
+      string sql = "SELECT * FROM knights Where id = @id";
       return _db.QueryFirstOrDefault<Knight>(sql, new { id });
+    }
+
+
+    public int delete(int id)
+    {
+      string sql = @"
+      DELETE FROM knights WHERE id = @id";
+      return _db.Execute(sql, new { id });
     }
   }
 }

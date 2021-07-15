@@ -62,5 +62,19 @@ namespace knights.Controllers
       }
 
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult<Knight> DeleteKnight(int id)
+    {
+      try
+      {
+        return Ok(_ks.delete(id));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+
+    }
   }
 }
