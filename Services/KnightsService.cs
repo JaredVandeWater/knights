@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using knights.Data;
 using knights.Models;
@@ -39,6 +40,14 @@ namespace knights.Services
       {
         throw new System.Exception("could not delete");
       }
+    }
+
+    public Knight update(int id, Knight knight)
+    {
+      knight.Id = id;
+      Knight original = GetById(id);
+      knight.Weapon = knight.Weapon == null ? original.Weapon : knight.Weapon;
+      knight.Name = knight.Name == null ? original.Name : knight.Name;
     }
   }
 }

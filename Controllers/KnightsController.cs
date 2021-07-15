@@ -49,12 +49,27 @@ namespace knights.Controllers
 
 
     [HttpPost]
-    public ActionResult<Knight> CreateKnights([FromBody] Knight knightData)
+    public ActionResult<Knight> CreateKnight([FromBody] Knight knightData)
     {
       try
       {
         Knight knight = _ks.CreateKnight(knightData);
         return Ok(knight);
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+
+    }
+
+
+    [HttpPut("{id}")]
+    public ActionResult<Knight> UpdateKnight(int id, [FromBody] Knight knight)
+    {
+      try
+      {
+        return Ok(_ks.update(id, knight));
       }
       catch (System.Exception e)
       {
