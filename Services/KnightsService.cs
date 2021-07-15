@@ -7,21 +7,26 @@ namespace knights.Services
 {
   public class KnightsService
   {
-    private readonly KnightsRepository _artistsRepo;
+    private readonly KnightsRepository _knightsRepo;
 
-    public KnightsService(KnightsRepository artistsRepo)
+    public KnightsService(KnightsRepository knightsRepo)
     {
-      _artistsRepo = artistsRepo;
+      _knightsRepo = knightsRepo;
     }
 
     public List<Knight> GetAll()
     {
-      return _artistsRepo.GetAll();
+      return _knightsRepo.GetAll();
     }
 
-    public Knight CreateKnight(Knight artistData)
+    public Knight CreateKnight(Knight knightData)
     {
-      return _artistsRepo.Create(artistData);
+      return _knightsRepo.Create(knightData);
+    }
+
+    internal object GetById(int id)
+    {
+      return _knightsRepo.getOne(id);
     }
   }
 }

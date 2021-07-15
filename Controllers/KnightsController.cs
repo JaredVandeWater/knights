@@ -30,6 +30,24 @@ namespace knights.Controllers
       }
 
     }
+
+
+    [HttpGet("{id}")]
+    public ActionResult<List<Knight>> GetKnightById(int id)
+    {
+      try
+      {
+        var knight = _ks.GetById(id);
+        return Ok(knight);
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+
+    }
+
+
     [HttpPost]
     public ActionResult<Knight> CreateKnights([FromBody] Knight knightData)
     {
