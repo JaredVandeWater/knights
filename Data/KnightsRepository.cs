@@ -46,5 +46,20 @@ namespace knights.Data
       DELETE FROM knights WHERE id = @id";
       return _db.Execute(sql, new { id });
     }
+
+    internal int update(Knight knight)
+    {
+      string sql = @"
+UPDATE knights
+SET
+name = @Name,
+weapon = @Weapon
+WHERE id = @id;
+";
+      return _db.Execute(sql, knight);
+    }
   }
 }
+
+
+

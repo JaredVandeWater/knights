@@ -48,6 +48,22 @@ namespace knights.Services
       Knight original = GetById(id);
       knight.Weapon = knight.Weapon == null ? original.Weapon : knight.Weapon;
       knight.Name = knight.Name == null ? original.Name : knight.Name;
+
+      int updated = _knightsRepo.update(knight);
+      if (updated > 0)
+      {
+        return knight;
+      }
+      else
+      {
+        throw new Exception("Update Failed");
+      }
     }
   }
 }
+
+
+
+
+
+
